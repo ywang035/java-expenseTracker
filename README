@@ -1,1 +1,15 @@
 This is a project helps me practice Javafx with Scene Builder, also I just really want to create a money keeper program to see my spending everyday
+
+*** Must have function: ***
+1.  a pre-defined [life] section for day-to-day spending tracking, and a [work] section for other spending
+2.  able to add or delete a record/transaction to or from a listview of transaction
+3.  abot to record transaction's amount, income or payment (as in flow and out flow), category (food, shopping, etc ..) and a          
+    short memo for this transaction 
+4.  able to pick a date
+5.  able to show a pie chart of different transaction, showing which category takes up the most percentage
+6.  able to show a summary of out flow and inflow
+
+
+
+*** Nice to have function: ***
+1.  
