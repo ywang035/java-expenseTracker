@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -15,9 +17,11 @@ import java.util.ResourceBundle;
 
 public class AddRecordController implements Initializable {
 
+    private String inputCate;
     private String inputStr;
     private ArrayList<String> inputArr = new ArrayList<String>();
     private Boolean flowFlag = true; // true for out, falso for in
+    private ObservableList<String> category = FXCollections.observableArrayList("food", "water");
 
     @FXML
     private Text display_txt;
@@ -240,20 +244,23 @@ public class AddRecordController implements Initializable {
         display_txt.setText(inputStr);
     }
     @FXML
-    private void enterNum(){
+    private void enterNum() {
         if(inputStr != null){
             if(!inputStr.equals("0") && !inputArr.get(inputArr.size()-1).equals(".")
                     && !inputStr.equals("0.00") && !inputStr.equals("0.0") ){
 
-
                 Text txt = new Text();
-                txt.setText(inputStr);
+                inputCate = num_menu.getSelectionModel().getSelectedItem().toString();
+
                 if(flowFlag == true){
+                    txt.setText("-" + inputStr + ", " + inputCate);
                     txt.setFill(Color.RED);
                 }else{
+                    txt.setText("+" + inputStr + ", " + inputCate);
                     txt.setFill(Color.GREEN);
                 }
                 MainController.data.add(txt);
+                MainController.updateDataCSV();
                 selectOutFlow();
 
                 inputStr = null;
@@ -282,6 +289,9 @@ public class AddRecordController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(flowFlag);
+        //System.out.println(flowFlag);
+        num_menu.setValue("food");
+        num_menu.setItems(category);
+
     }
 }

@@ -32,7 +32,7 @@
       <Button fx:id="num_enter" layoutX="101.0" layoutY="353.0" mnemonicParsing="false" onAction="#enterNum" prefWidth="70.0" text="Save" />
       <RadioButton fx:id="outFlow" layoutX="16.0" layoutY="99.0" mnemonicParsing="false" onAction="#selectOutFlow" selected="true" text="Out Flow" />
       <RadioButton fx:id="inFlow" layoutX="102.0" layoutY="99.0" mnemonicParsing="false" onAction="#selectInFlow" text="In Flow" />
-      <ChoiceBox fx:id="num_category" layoutX="186.0" layoutY="94.0" prefHeight="27.0" prefWidth="70.0" />
       <TextField fx:id="num_memo" layoutX="18.0" layoutY="143.0" prefHeight="27.0" prefWidth="238.0" promptText="Memo here ..." />
+      <ChoiceBox fx:id="num_menu" layoutX="175.0" layoutY="94.0" prefHeight="27.0" prefWidth="77.0" />
    </children>
 </Pane>
