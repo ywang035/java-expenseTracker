@@ -2,6 +2,7 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +16,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 // controller for [Add Transaction] scene
@@ -42,7 +41,8 @@ public class AddController implements Initializable {
     private ChoiceBox num_menu;
     @FXML
     private Button num_1, num_2, num_3, num_4, num_5, num_6, num_7, num_8, num_9, num_dot;
-
+    @FXML
+    private DatePicker num_date;
 
     // ****** below are functions for different controls ******
 
@@ -229,18 +229,19 @@ public class AddController implements Initializable {
 
     @FXML
     private void enterNum() {
-        Text txt = new Text();
 
-        String noteStr = num_memo.getText();
+        if(inputStr != null && num_date.getValue() != null){
+            Text txt = new Text();
+            String noteStr = num_memo.getText();
+            String dateStr = num_date.getValue().toString();
 
-        if(inputStr != null){
             if(!inputStr.equals("0") && !inputArr.get(inputArr.size()-1).equals(".")
                     && !inputStr.equals("0.00") && !inputStr.equals("0.0") ){
 
                 inputCate = num_menu.getSelectionModel().getSelectedItem().toString();
 
                 if(flowFlag == true){
-                    txt.setText("-" + inputStr + ", " + inputCate + ", " + noteStr);
+                    txt.setText("-" + inputStr + ", " + inputCate + ", " + noteStr + ", " + dateStr);
                     txt.setFill(Color.RED);
                 }else{
                     txt.setText("+" + inputStr + ", " + inputCate);

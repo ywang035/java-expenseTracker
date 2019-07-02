@@ -97,6 +97,8 @@ public class MainController implements Initializable {
     protected static void updateDataCSV(){
         try {
 
+
+
             FileWriter writer = new FileWriter("record.csv");
 
             for (Text row : dataList) {

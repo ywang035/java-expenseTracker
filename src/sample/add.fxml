@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="AddRecordPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="270.0" visible="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AddController">
+<Pane fx:id="AddRecordPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AddController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="53.0" layoutX="16.0" layoutY="27.0" stroke="BLACK" strokeType="INSIDE" width="238.0" />
       <Text fx:id="display_txt" layoutX="22.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="226.0">
@@ -30,10 +31,11 @@
       <Button fx:id="num_dot" layoutX="102.0" layoutY="302.0" mnemonicParsing="false" onAction="#addDot" prefWidth="70.0" text="." />
       <Button fx:id="num_del" layoutX="186.0" layoutY="302.0" mnemonicParsing="false" onAction="#deleteNum" prefWidth="70.0" text="Del" />
       <Button fx:id="num_enter" layoutX="101.0" layoutY="353.0" mnemonicParsing="false" onAction="#enterNum" prefWidth="70.0" text="Save" />
-      <RadioButton fx:id="outFlow" layoutX="16.0" layoutY="99.0" mnemonicParsing="false" onAction="#selectOutFlow" selected="true" text="Out Flow" />
-      <RadioButton fx:id="inFlow" layoutX="102.0" layoutY="99.0" mnemonicParsing="false" onAction="#selectInFlow" text="In Flow" />
-      <TextField fx:id="num_memo" layoutX="18.0" layoutY="143.0" prefHeight="27.0" prefWidth="238.0" promptText="Memo here ..." />
-      <ChoiceBox fx:id="num_menu" layoutX="175.0" layoutY="94.0" prefHeight="27.0" prefWidth="77.0" />
+      <RadioButton fx:id="outFlow" layoutX="172.0" layoutY="91.0" mnemonicParsing="false" onAction="#selectOutFlow" selected="true" text="Expense" />
+      <RadioButton fx:id="inFlow" layoutX="172.0" layoutY="126.0" mnemonicParsing="false" onAction="#selectInFlow" text="Income" />
+      <TextField fx:id="num_memo" layoutX="17.0" layoutY="160.0" prefHeight="27.0" prefWidth="238.0" promptText="Memo here ..." />
+      <ChoiceBox fx:id="num_menu" accessibleText="dsa" layoutX="16.0" layoutY="121.0" prefHeight="27.0" prefWidth="117.0" />
       <Text layoutX="18.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Transaction" />
+      <DatePicker fx:id="num_date" layoutX="16.0" layoutY="86.0" prefHeight="27.0" prefWidth="117.0" promptText="Pick Date" />
    </children>
 </Pane>
