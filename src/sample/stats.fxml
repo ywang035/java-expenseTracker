@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane fx:id="StatsRecordPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="270.0" visible="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.StatsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="22.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="227.0" />
+      <Text layoutX="29.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistics:" />
+      <PieChart fx:id="pieChart" animated="false" layoutX="8.0" layoutY="137.0" legendVisible="false" prefHeight="223.0" prefWidth="253.0" />
+      <Text fx:id="totalNumText" layoutX="30.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total: " wrappingWidth="212.76611328125" />
+      <Button fx:id="btn_showStats" layoutX="92.0" layoutY="364.0" mnemonicParsing="false" onAction="#updateMoney" text="Show Stats" />
+      <Text fx:id="totalIncomeText" layoutX="30.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Income: " wrappingWidth="212.76611328125" />
+      <Text fx:id="totalSpendText" layoutX="30.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spend: " wrappingWidth="212.76611328125" />
+      <Text fx:id="numTrans" layoutX="30.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Records:" wrappingWidth="212.76611328125" />
+   </children>
+</Pane>

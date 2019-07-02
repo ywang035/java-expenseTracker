@@ -17,50 +17,48 @@ import javafx.util.Callback;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
+// controller for [main] scene
+// including a list view and 3 buttons
 public class MainController implements Initializable {
 
-//    protected static ObservableList<String> data = FXCollections.observableArrayList();
-    protected static ObservableList<Text> data = FXCollections.observableArrayList();
+    protected static ObservableList<Text> dataList = FXCollections.observableArrayList();
 
     @FXML
     private ListView<Text> life_listview = new ListView<Text>();;
-
     @FXML
-    private Pane addRecord_interface;
+    private Pane add_interface;
+    @FXML
+    private Pane stats_interface;
 
     @FXML
     private void makeAddRecordVisiable(){
-        addRecord_interface.setVisible(true);
+        stats_interface.setVisible(false);
+        add_interface.setVisible(true);
     }
+
     @FXML
     private void makeShowStatsVisiable(){
-
-    }
-    @FXML
-    private void deleteRecord(){
-        int selectedIndex = life_listview.getSelectionModel().getSelectedIndex();
-        if(selectedIndex >= 0){
-            data.remove(selectedIndex);
-        }
-        updateDataCSV();
-
-        System.out.println(data);
+        add_interface.setVisible(false);
+        stats_interface.setVisible(true);
+        StatsController sc = new StatsController();
+        sc.getList();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         readDataCSV();
-        System.out.println("this is list: " + data.toString());
-        life_listview.setItems(data);
+        life_listview.setItems(dataList);
     }
 
-    private void readDataCSV(){
+    // method to read CSV file when opened
+    private static void readDataCSV(){
         File file = new File("record.csv");
 
         if(file.exists()){ // file exist, start reading
-            System.out.println("file is here");
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 String rowData;
@@ -68,27 +66,25 @@ public class MainController implements Initializable {
                 while((rowData = reader.readLine())!=null){
 
                     if(rowData.charAt(0) == '-'){
-                        System.out.println(rowData + " is negative");
                         Text txt = new Text();
                         txt.setText(rowData);
                         txt.setFill(Color.RED);
-                        data.add(txt);
+                        dataList.add(txt);
                     }else{
-                        System.out.println(rowData + " is positive");
                         Text txt = new Text();
                         txt.setText(rowData);
                         txt.setFill(Color.GREEN);
-                        data.add(txt);
+                        dataList.add(txt);
                     }
 
                 }
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }else{ // file not exist, create one
-            System.out.println("file not here");
             try {
                 Writer writer = new BufferedWriter(new FileWriter(file)); // create file
             } catch (IOException e) {
@@ -97,11 +93,13 @@ public class MainController implements Initializable {
         }
     }
 
+    // method to update and save CSV when list view is updated with add/delete transaction
     protected static void updateDataCSV(){
         try {
+
             FileWriter writer = new FileWriter("record.csv");
 
-            for (Text row : data) {
+            for (Text row : dataList) {
                 writer.write(row.getText()+"\n");
             }
             writer.close();
@@ -111,5 +109,14 @@ public class MainController implements Initializable {
         }
     }
 
+    // method to delete a transaction
+    @FXML
+    private void deleteRecord(){
+        int selectedIndex = life_listview.getSelectionModel().getSelectedIndex();
+        if(selectedIndex >= 0){
+            dataList.remove(selectedIndex);
+        }
+        updateDataCSV();
+    }
 
 }
