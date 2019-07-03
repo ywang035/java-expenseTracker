@@ -80,11 +80,11 @@ public class StatsController implements Initializable {
             float money = Float.parseFloat(i[0]);
             String category = i[1];
             System.out.println(i[1]);
-            if(category.equals(" food")){
+            if(category.equals(" food") && money < 0){
                 foodFloat += money;
-            }else if(category.equals(" water")){
+            }else if(category.equals(" water") && money < 0){
                 waterFloat += money;
-            }else if(category.equals(" other")){
+            }else if(category.equals(" other") && money < 0){
                 otherFloat += money;
             }
         }
@@ -103,6 +103,7 @@ public class StatsController implements Initializable {
                 new PieChart.Data(waterPercentStr, waterPercent),
                 new PieChart.Data(otherPercentStr, otherPercent));
 
+        pieChart.setTitle("Spending Pie Chart");
         pieChart.setData(pieChartData);
     }
 }
